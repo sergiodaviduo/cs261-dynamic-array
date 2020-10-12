@@ -3,6 +3,7 @@
 # YOUR NAME
 
 import numpy as np
+import traceback
 
 class DynamicArray:
 
@@ -16,7 +17,10 @@ class DynamicArray:
         return self.arrLength
 
     def __getitem__(self, item):
-        return self.arr[item]
+        if(item > 0):
+            traceback.format_exception_only(IndexError, item)
+        else:
+            return self.arr[item]
 
     def append(self, add):
         if self.arrLength == 0:
