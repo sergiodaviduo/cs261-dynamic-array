@@ -26,22 +26,26 @@ class DynamicArray:
             self.next_index = 1
 
         else:
-            new_arr = np.arange(self.arrLength*2, dtype=type(add))
-            new_data = np.arange(self.arrLength*2, dtype=object)
+            new_len = self.arrLength+1
+            new_arr = np.arange(new_len, dtype=object)
+            new_data = np.arange(new_len, dtype=object)
             iter_arr = np.arange(self.arrLength)
-            print(iter_arr[0])
+
+            print('adding')
             for x in iter_arr:
                 new_arr[x] = self.arr[x]
                 new_data[x] = self.arr[x]
+                print(new_data[x])
 
-            new_arr[self.arrLength] = new_data[self.arrLength] = add
+            new_arr[self.arrLength] = add
+            new_data[self.arrLength] = add
 
             self.arr = new_arr
             self.data = new_data
-            self.arrLength = (self.arrLength * 2)
+            self.arrLength = new_len
 
             if(self.arrLength > 10):
-                self.capacity = self.arrLength
+                self.capacity = self.capacity*2
 
     def is_empty(self):
         if self.arrLength == 0:
