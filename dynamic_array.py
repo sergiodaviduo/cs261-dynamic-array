@@ -50,6 +50,12 @@ class DynamicArray:
     def is_empty(self):
         if self.arrLength == 0:
             return True
+    def clear(self):
+        self.capacity = 10
+        self.arrLength = 0
+        self.arr = np.empty(0)
+        self.data = np.arange(10, dtype=object)
+        self.next_index = 0
 
 
     pass
