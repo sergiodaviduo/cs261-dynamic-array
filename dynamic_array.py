@@ -19,12 +19,17 @@ class DynamicArray:
     def append(self, add):
         if self.arrLength == 0:
             self.arrLength += 1
-            self.arr =np.array([add])
+            self.arr = np.array([add])
         else:
-            self.arrLength = (self.arrLength*2)
-            new_arr = np.arange(self.arrLength)
-            for x in new_arr:
-                self.arr[x] = x     # only works because of numpy defaults
+            new_arr = np.arange(self.arrLength*2)
+            iter_arr = np.arange(self.arrLength)
+            print(iter_arr[0])
+            for x in iter_arr:
+                new_arr[x] = self.arr[x]
+
+            new_arr[self.arrLength] = add
+            self.arr = new_arr
+            self.arrLength = (self.arrLength * 2)
 
     def is_empty(self):
         if self.arrLength == 0:
