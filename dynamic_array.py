@@ -9,7 +9,7 @@ class DynamicArray:
     capacity = 10
     arrLength = 0
     arr = np.empty(0)
-    data = np.empty(0)
+    data = np.array(np.dtype)
 
     def __len__(self):
         return self.arrLength
