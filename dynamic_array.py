@@ -37,6 +37,7 @@ class DynamicArray:
             self.arr = new_arr
             self.data = new_data
             self.arrLength = (self.arrLength * 2)
+
             if(self.arrLength > 10):
                 self.capacity = self.arrLength
 
