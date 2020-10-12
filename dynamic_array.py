@@ -10,6 +10,7 @@ class DynamicArray:
     arrLength = 0
     arr = np.empty(0)
     data = np.arange(10, dtype=object)
+    next_index = 0
 
     def __len__(self):
         return self.arrLength
@@ -44,5 +45,6 @@ class DynamicArray:
     def is_empty(self):
         if self.arrLength == 0:
             return True
+
 
     pass
