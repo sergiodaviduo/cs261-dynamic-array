@@ -23,6 +23,7 @@ class DynamicArray:
             self.arrLength += 1
             self.arr = np.array([add])
             self.data[0] = add
+            self.next_index = 1
 
         else:
             new_arr = np.arange(self.arrLength*2)
