@@ -185,4 +185,11 @@ class DynamicArray:
                     min = x
         return min
 
+    def sum(self):
+        sum = 0
+        for x in self.arr:
+            sum += x
+
+        return sum
+
     pass
