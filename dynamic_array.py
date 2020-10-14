@@ -23,6 +23,8 @@ class DynamicArray:
             return self.arr[item]
 
     def append(self, add):
+        if (self.arrLength == self.capacity):
+            self.capacity = self.capacity * 2
         if self.arrLength == 0:
             self.arrLength += 1
             self.arr = np.array([add])
@@ -45,9 +47,6 @@ class DynamicArray:
             self.arr = new_arr
             self.data = new_data
             self.arrLength = new_len
-
-            if(self.arrLength > self.capacity):
-                self.capacity = self.capacity*2
 
             self.next_index = self.arrLength
 
@@ -111,6 +110,8 @@ class DynamicArray:
         self.next_index = self.arrLength
 
     def insert(self, index, item):
+        if (self.arrLength == self.capacity):
+            self.capacity = self.capacity * 2
         if (index < 0 or index > self.arrLength):
             try:
                 # I think this is cheating but??
@@ -151,9 +152,6 @@ class DynamicArray:
         self.data = new_data
         self.arrLength += 1
         self.next_index = self.arrLength
-
-        if (self.arrLength > self.capacity):
-            self.capacity = self.capacity * 2
 
         print('after')
         for x in self.arr:
