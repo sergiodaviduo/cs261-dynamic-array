@@ -76,4 +76,20 @@ class DynamicArray:
 
         return to_pop
 
+    def delete(self, index):
+        if (self.arrLength == 0):
+            traceback.format_exception_only(IndexError, self.arrLength)
+
+        new_arr = np.arange(self.arrLength, dtype=object)
+
+        for x in range(0, self.arrLength - 1):
+            if (index == x):
+                continue
+                x -= 1
+            new_arr[x] = self.arr[x]
+
+        self.arr = new_arr
+
+        self.arrLength -= 1
+
     pass
