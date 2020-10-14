@@ -17,7 +17,7 @@ class DynamicArray:
         return self.arrLength
 
     def __getitem__(self, item):
-        if(item > 0):
+        if(item > self.arrLength):
             traceback.format_exception_only(IndexError, item)
         else:
             return self.arr[item]
@@ -35,7 +35,6 @@ class DynamicArray:
             new_data = np.arange(new_len, dtype=object)
             iter_arr = np.arange(self.arrLength)
 
-            print('adding')
             for x in iter_arr:
                 new_arr[x] = self.arr[x]
                 new_data[x] = self.arr[x]
@@ -61,5 +60,17 @@ class DynamicArray:
         self.data = np.arange(10, dtype=object)
         self.next_index = 0
 
+    def pop(self):
+        to_pop = self.arr[self.arrLength-1]
+        new_arr = np.arange(self.arrLength, dtype=object)
+
+        for x in range(0, self.arrLength-1):
+            new_arr[x] = self.arr[x]
+
+        self.arr = new_arr
+
+        self.arrLength -= 1
+
+        return to_pop
 
     pass
