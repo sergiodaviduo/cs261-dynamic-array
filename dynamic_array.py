@@ -65,7 +65,7 @@ class DynamicArray:
             traceback.format_exception_only(IndexError, self.arrLength)
 
         to_pop = self.arr[self.arrLength-1]
-        new_arr = np.arange(self.arrLength, dtype=object)
+        new_arr = np.arange(self.arrLength-1, dtype=object)
 
         for x in range(0, self.arrLength-1):
             new_arr[x] = self.arr[x]
@@ -90,7 +90,7 @@ class DynamicArray:
             except IndexError as e:
                 raise IndexError('index out of range.')
 
-        new_arr = np.arange(self.arrLength, dtype=object)
+        new_arr = np.arange(self.arrLength-1, dtype=object)
         # for middle deletes, can use  var y, set as 0 initially, add to x, and when continue hits, set y to 1
         y = 0
         for x in range(0, self.arrLength - 1):
@@ -101,4 +101,29 @@ class DynamicArray:
         self.arr = new_arr
 
         self.arrLength -= 1
+
+    def insert(self, index, item):
+        new_arr = np.arange(self.arrLength+1, dtype=object)
+
+        y = 0
+
+        print('before')
+        for x in self.arr:
+            print(str(x))
+        for x in range(0, self.arrLength+1):
+            if (index == x):
+                y = 1
+                new_arr[x] = item
+            elif x == index == self.arrLength:
+                new_arr[x] = item
+                break
+            else:
+                new_arr[x + y] = self.arr[x]
+        self.arr = new_arr
+        self.arrLength += 1
+
+        print('after')
+        for x in self.arr:
+            print(str(x))
+
     pass
