@@ -116,9 +116,11 @@ class DynamicArray:
         print('before')
         for x in self.arr:
             print(str(x))
+        print("\n")
         for x in range(0, self.arrLength+1):
+            print('at '+str(x))
             if (index == x and index != 0):
-                y = 1
+                z = -1
                 new_arr[x] = item
             elif x == index == self.arrLength:
                 new_arr[x] = item
@@ -126,8 +128,11 @@ class DynamicArray:
             elif x == index == 0:
                 new_arr[x] = item
                 z = -1
+                continue
             else:
-                new_arr[x + y] = self.arr[x+z]
+                new_arr[x+y] = self.arr[x+z]
+
+            print(str(new_arr[x]))
         self.arr = new_arr
         self.arrLength += 1
 
