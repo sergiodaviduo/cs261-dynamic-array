@@ -172,6 +172,9 @@ class DynamicArray:
             else:
                 if x > max:
                     max = x
+
+        if(self.is_empty() == True):
+            return None
         return max
 
     def min(self):
@@ -183,6 +186,9 @@ class DynamicArray:
             else:
                 if x < min:
                     min = x
+
+        if (self.is_empty() == True):
+            return None
         return min
 
     def sum(self):
@@ -190,6 +196,8 @@ class DynamicArray:
         for x in self.arr:
             sum += x
 
+        if (self.is_empty() == True):
+            return None
         return sum
 
     pass
