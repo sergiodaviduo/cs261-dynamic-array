@@ -32,7 +32,7 @@ class DynamicArray:
         else:
             new_len = self.arrLength+1
             new_arr = np.arange(new_len, dtype=object)
-            new_data = np.arange(new_len, dtype=object)
+            new_data = np.arange(self.capacity, dtype=object)
             iter_arr = np.arange(self.arrLength)
 
             for x in iter_arr:
@@ -46,8 +46,10 @@ class DynamicArray:
             self.data = new_data
             self.arrLength = new_len
 
-            if(self.arrLength > 10):
+            if(self.arrLength > self.capacity):
                 self.capacity = self.capacity*2
+
+            self.next_index = self.arrLength
 
     def is_empty(self):
         if self.arrLength == 0:
@@ -65,13 +67,16 @@ class DynamicArray:
 
         to_pop = self.arr[self.arrLength-1]
         new_arr = np.arange(self.arrLength-1, dtype=object)
+        new_data = np.arange(self.capacity, dtype=object)
 
         for x in range(0, self.arrLength-1):
             new_arr[x] = self.arr[x]
+            new_data[x] = self.arr[x]
 
         self.arr = new_arr
-
+        self.data = new_data
         self.arrLength -= 1
+        self.next_index = self.arrLength
 
         return to_pop
 
@@ -90,16 +95,20 @@ class DynamicArray:
                 raise IndexError('index out of range.')
 
         new_arr = np.arange(self.arrLength-1, dtype=object)
+        new_data = np.arange(self.capacity, dtype=object)
+
         # for middle deletes, can use  var y, set as 0 initially, add to x, and when continue hits, set y to 1
         y = 0
         for x in range(0, self.arrLength - 1):
             if (index == x):
                 y = 1
             new_arr[x] = self.arr[x+y]
+            new_data[x] = self.arr[x+y]
 
         self.arr = new_arr
-
+        self.data = new_data
         self.arrLength -= 1
+        self.next_index = self.arrLength
 
     def insert(self, index, item):
         if (index < 0 or index > self.arrLength):
@@ -110,6 +119,7 @@ class DynamicArray:
                 raise IndexError('index out of range.')
 
         new_arr = np.arange(self.arrLength+1, dtype=object)
+        new_data = np.arange(self.capacity, dtype=object)
 
         y = 0
         z = 0
@@ -122,26 +132,37 @@ class DynamicArray:
             if (index == x and index != 0):
                 z = -1
                 new_arr[x] = item
+                new_data[x] = item
             elif x == index == self.arrLength:
                 new_arr[x] = item
+                new_data[x] = item
                 break
             elif x == index == 0:
                 new_arr[x] = item
+                new_data[x] = item
                 z = -1
                 continue
             else:
                 new_arr[x+y] = self.arr[x+z]
+                new_data[x+y] = self.arr[x+z]
 
             print(str(new_arr[x]))
         self.arr = new_arr
+        self.data = new_data
         self.arrLength += 1
+        self.next_index = self.arrLength
+
+        if (self.arrLength > self.capacity):
+            self.capacity = self.capacity * 2
 
         print('after')
         for x in self.arr:
             print(str(x))
 
     def is_full(self):
-        if self.arrLength == 0:
+        if self.arrLength != self.capacity:
             return False
+        else:
+            return True
 
     pass
