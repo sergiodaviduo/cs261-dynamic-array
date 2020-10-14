@@ -174,4 +174,15 @@ class DynamicArray:
                     max = x
         return max
 
+    def min(self):
+        min = False
+
+        for x in self.arr:
+            if min == False:
+                min = x
+            else:
+                if x < min:
+                    min = x
+        return min
+
     pass
