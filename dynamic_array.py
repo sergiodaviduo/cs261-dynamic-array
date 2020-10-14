@@ -103,6 +103,13 @@ class DynamicArray:
         self.arrLength -= 1
 
     def insert(self, index, item):
+        if (index < 0 or index > self.arrLength):
+            try:
+                # I think this is cheating but??
+                self.arr[index]
+            except IndexError as e:
+                raise IndexError('index out of range.')
+
         new_arr = np.arange(self.arrLength+1, dtype=object)
 
         y = 0
