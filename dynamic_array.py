@@ -124,12 +124,12 @@ class DynamicArray:
 
         y = 0
         z = 0
-        print('before')
-        for x in self.arr:
-            print(str(x))
-        print("\n")
+        # print('before')
+        # for x in self.arr:
+        #     print(str(x))
+        # print("\n")
         for x in range(0, self.arrLength+1):
-            print('at '+str(x))
+            # print('at '+str(x))
             if (index == x and index != 0):
                 z = -1
                 new_arr[x] = item
@@ -147,15 +147,15 @@ class DynamicArray:
                 new_arr[x+y] = self.arr[x+z]
                 new_data[x+y] = self.arr[x+z]
 
-            print(str(new_arr[x]))
+            # print(str(new_arr[x]))
         self.arr = new_arr
         self.data = new_data
         self.arrLength += 1
         self.next_index = self.arrLength
 
-        print('after')
-        for x in self.arr:
-            print(str(x))
+        # print('after')
+        # for x in self.arr:
+            # print(str(x))
 
     def is_full(self):
         if self.arrLength != self.capacity:
@@ -200,4 +200,9 @@ class DynamicArray:
             return None
         return sum
 
+    def linear_search(self, item):
+        for x in range(0,self.arrLength):
+            if(item == self.arr[x]):
+                return x
+        return None
     pass
