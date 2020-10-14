@@ -61,6 +61,9 @@ class DynamicArray:
         self.next_index = 0
 
     def pop(self):
+        if(self.arrLength == 0):
+            traceback.format_exception_only(IndexError, self.arrLength)
+
         to_pop = self.arr[self.arrLength-1]
         new_arr = np.arange(self.arrLength, dtype=object)
 
