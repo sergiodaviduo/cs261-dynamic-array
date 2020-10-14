@@ -38,7 +38,6 @@ class DynamicArray:
             for x in iter_arr:
                 new_arr[x] = self.arr[x]
                 new_data[x] = self.arr[x]
-                print(new_data[x])
 
             new_arr[self.arrLength] = add
             new_data[self.arrLength] = add
@@ -113,19 +112,22 @@ class DynamicArray:
         new_arr = np.arange(self.arrLength+1, dtype=object)
 
         y = 0
-
+        z = 0
         print('before')
         for x in self.arr:
             print(str(x))
         for x in range(0, self.arrLength+1):
-            if (index == x):
+            if (index == x and index != 0):
                 y = 1
                 new_arr[x] = item
             elif x == index == self.arrLength:
                 new_arr[x] = item
                 break
+            elif x == index == 0:
+                new_arr[x] = item
+                z = -1
             else:
-                new_arr[x + y] = self.arr[x]
+                new_arr[x + y] = self.arr[x+z]
         self.arr = new_arr
         self.arrLength += 1
 
