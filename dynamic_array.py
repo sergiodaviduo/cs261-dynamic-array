@@ -79,7 +79,7 @@ class DynamicArray:
     def delete(self, index):
         if (self.arrLength == 0):
             traceback.format_exception_only(IndexError, self.arrLength)
-        elif (index < 0 or index < self.arrLength-1):
+        elif (index < 0 or index > self.arrLength-1):
             try:
                 # I think this is cheating but......
                 a = [1]
@@ -89,11 +89,11 @@ class DynamicArray:
 
         new_arr = np.arange(self.arrLength, dtype=object)
         # for middle deletes, can use  var y, set as 0 initially, add to x, and when continue hits, set y to 1
+        y = 0
         for x in range(0, self.arrLength - 1):
             if (index == x):
-                continue
-                x -= 1
-            new_arr[x] = self.arr[x]
+                y = 1
+            new_arr[x] = self.arr[x+y]
 
         self.arr = new_arr
 
