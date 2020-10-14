@@ -78,12 +78,15 @@ class DynamicArray:
 
     def delete(self, index):
         if (self.arrLength == 0):
-            traceback.format_exception_only(IndexError, self.arrLength)
+            try:
+                # I think this is cheating but......
+                self.arr[-1]
+            except IndexError as e:
+                raise IndexError('index out of range.')
         elif (index < 0 or index > self.arrLength-1):
             try:
                 # I think this is cheating but......
-                a = [1]
-                b = a[2]
+                self.arr[-2]
             except IndexError as e:
                 raise IndexError('index out of range.')
 
