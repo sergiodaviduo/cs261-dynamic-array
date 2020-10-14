@@ -163,4 +163,15 @@ class DynamicArray:
         else:
             return True
 
+    def max(self):
+        max = False
+
+        for x in self.arr:
+            if max == False:
+                max = x
+            else:
+                if x > max:
+                    max = x
+        return max
+
     pass
