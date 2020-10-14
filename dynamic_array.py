@@ -140,4 +140,8 @@ class DynamicArray:
         for x in self.arr:
             print(str(x))
 
+    def is_full(self):
+        if self.arrLength == 0:
+            return False
+
     pass
